@@ -102,7 +102,9 @@ When you execute the former program, you get:
 ]
 ```
 
-Here is a description of the lexer object:
+## The Lexical Analyzer Object
+
+Here is a description of the attributes of the lexer object:
 
 ```js
 {

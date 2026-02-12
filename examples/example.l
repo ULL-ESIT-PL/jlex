@@ -1,6 +1,7 @@
+comment [/][*](.|[\r\n])*?[*][/]
 %%
-\s+                   /* skip whitespace */
+\s+|{comment}         /* skip whitespace */
 [0-9]+                return 'NUMBER';
-"-"                   return '-';
+[-+*/]                return 'OPERATOR';
 <<EOF>>               return 'EOF';
 .                     return 'INVALID';
