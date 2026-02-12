@@ -1,23 +1,36 @@
 {
   "name": "jlex",
   "version": "1.0.1",
-  "main": "jlex.js",
   "description": "A wrapper around jison-lex to make it work as a standalone program like Flex",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "cd examples && ../jlex.js example"
-  },
-  "bin": {
-    "jlex": "jlex.js"
-  },
   "keywords": [
     "jison-lex",
     "jison",
     "flex"
   ],
-  "author": "Casiano Rodriguez Leon <crguezl@ull.edu.es> (https://crguezl.github.io/)",
+  "homepage": "https://github.com/ULL-ESIT-PL/jlex#readme",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-PL/jlex/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-ESIT-PL/jlex.git"
+  },
   "license": "ISC",
+  "author": "Casiano Rodriguez Leon <crguezl@ull.edu.es> (https://crguezl.github.io/)",
+  "type": "commonjs",
+  "main": "jlex.js",
+  "bin": {
+    "jlex": "jlex.js"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example": "cd examples && ../jlex.js example"
+  },
   "dependencies": {
     "jison": "^0.4.18"
-  }
+  },
+  "devDependencies": {}
 }
