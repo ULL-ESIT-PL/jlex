@@ -1,6 +1,6 @@
 {
   "name": "jlex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "jlex.js",
   "description": "A wrapper around jison-lex to make it work as a standalone program like Flex",
   "scripts": {
@@ -10,7 +10,11 @@
   "bin": {
     "jlex": "jlex.js"
   },
-  "keywords": ["jison-lex", "jison", "flex"],
+  "keywords": [
+    "jison-lex",
+    "jison",
+    "flex"
+  ],
   "author": "Casiano Rodriguez Leon <crguezl@ull.edu.es> (https://crguezl.github.io/)",
   "license": "ISC",
   "dependencies": {
