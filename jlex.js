@@ -17,14 +17,18 @@ program.parse(process.argv);
 const options = program.opts();
 
 const fileName = program.args[0];
-console.log(fileName);
-const {dir, base, ext, name } = path.parse(fileName); // { dir, base, ext, name }
+
+const {dir,name } = path.parse(fileName); // { dir, base, ext, name }
 const outputFileName = options.o || path.join(dir, `${name}.js`);
 const outputParse = path.parse(outputFileName);
+
 const shellCommand = `npx jison-lex ${fileName} -o ${outputFileName}`;
-execSync(shellCommand, { encoding: 'utf-8' });
-let lexerStr = fs.readFileSync(outputFileName, "utf8").toString();
-//console.log("Processing file:", lexerStr);
-let lexerModule = lexerStr.replace(new RegExp(`var ${outputParse.name} =`), `\nmodule.exports =`);
-console.log("Writing file:", outputFileName);
-fs.writeFileSync(outputFileName, lexerModule);
+try {
+    execSync(shellCommand, { encoding: 'utf-8' });
+    let lexerStr = fs.readFileSync(outputFileName, "utf8").toString();
+    let lexerModule = lexerStr.replace(new RegExp(`var ${outputParse.name} =`), `\nmodule.exports =`);
+    console.log("Writing file:", outputFileName);
+    fs.writeFileSync(outputFileName, lexerModule);
+} catch (error) {
+    console.error("Error:", error.message);
+}

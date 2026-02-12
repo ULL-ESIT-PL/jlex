@@ -27,7 +27,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "cd examples && ../jlex.js example"
+    "example": "./jlex.js examples/example.l && node examples/main.js"
   },
   "dependencies": {
     "commander": "^11.0.3",
