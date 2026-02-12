@@ -13,7 +13,6 @@
   "keywords": ["jison-lex", "jison", "flex"],
   "author": "Casiano Rodriguez Leon <crguezl@ull.edu.es> (https://crguezl.github.io/)",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "jison": "^0.4.18"
   }
