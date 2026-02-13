@@ -28,7 +28,7 @@ See https://github.com/ULL-ESIT-PL/jlex/blob/main/README.md for more help
 
 Assuming the following lexer in file [examples/example.l](examples/example.l):
 
-```
+```js
 comment [/][*](.|[\r\n])*?[*][/]
 %%
 \s+|{comment}         /* skip whitespace */
