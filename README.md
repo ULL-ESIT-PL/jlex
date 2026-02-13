@@ -35,7 +35,7 @@ Compile it with:
 npx jlex examples/example.l
 ``` 
 
-This produces a Common.JS module `examples/example.js` you can use with a simple `require` like in the file `main.js` below:
+This produces a Common.JS module `examples/example.js` you can use with a simple `require` like in the file [main.js](examples/main.js) below:
 
 ```js
 const lex = require("./example");
