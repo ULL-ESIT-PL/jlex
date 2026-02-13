@@ -192,3 +192,66 @@ Here is a description of the attributes of the lexer object:
 
 See file [examples/manual-lexer.js](examples/manual-lexer.js) to see an example that 
 illustrates how to write a Jison compatible lexer by hand.
+
+To use with the grammar in the `examples` folder, change the lexer to the hand-written one:
+
+```diff
+➜  jlex git:(main) ✗ git -P diff examples/grammar.jison 
+diff --git a/examples/grammar.jison b/examples/grammar.jison
+index 0b99d40..c9e974d 100644
+--- a/examples/grammar.jison
++++ b/examples/grammar.jison
+@@ -12,6 +12,7 @@ expr
+       {
+         $$ = {
+           type: "OPERATOR",
++          lexeme: $2,
+           left: $1,
+           right: $3,
+           loc: @2
+@@ -29,5 +30,7 @@ expr
+ 
+ %%
+ 
+-const lexer = require("./example.js");
++//const lexer = require("./example.js");
++const lexer = require("./manual-lexer.js");
++
+ parser.lexer = lexer;
+\ No newline at end of file
+```
+Then compile the grammar:
+
+```
+➜  jlex git:(main) ✗ npx jison examples/grammar.jison -o examples/parser.js
+```
+and use it like this:
+
+```js
+➜  jlex git:(main) ✗ node                                                  
+Welcome to Node.js v25.6.0.
+Type ".help" for more information.
+> p = require("./examples/parser.js")
+{
+  parser: { yy: {} },
+  Parser: [Function: Parser],
+  parse: [Function (anonymous)],
+  main: [Function: commonjsMain]
+}
+> p.parse("2*3")
+{
+  type: 'OPERATOR',
+  lexeme: '*',
+  left: {
+    type: 'number',
+    value: 2,
+    loc: { first_line: 1, last_line: 1, first_column: 0, last_column: 1 }
+  },
+  right: {
+    type: 'number',
+    value: 3,
+    loc: { first_line: 1, last_line: 1, first_column: 2, last_column: 3 }
+  },
+  loc: { first_line: 1, last_line: 1, first_column: 1, last_column: 2 }
+}
+```

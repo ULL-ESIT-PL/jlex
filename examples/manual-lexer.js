@@ -16,7 +16,7 @@ const lexer = {
 
   lex() {
     if (this.index >= this.input.length) {
-      return this.EOF;
+      return 'EOF' /* this.EOF */;
     }
 
     // Saltar espacios
@@ -33,9 +33,9 @@ const lexer = {
 
     const char = this.input[this.index];
 
-    // PLUS
-    if (char === "+") {
-      this.yytext = "+";
+    // OPERATOR
+    if (/[-+*\/]/.test(char)) {
+      this.yytext = char;
       this.advance(char);
 
       this.yylloc = {
@@ -45,7 +45,7 @@ const lexer = {
         last_column: this.column
       };
 
-      return "PLUS";
+      return "OPERATOR";
     }
 
     // NUMBER (soporta múltiples dígitos)

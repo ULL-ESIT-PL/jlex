@@ -12,6 +12,7 @@ expr
       {
         $$ = {
           type: "OPERATOR",
+          lexeme: $2,
           left: $1,
           right: $3,
           loc: @2
@@ -29,5 +30,7 @@ expr
 
 %%
 
-const lexer = require("./example.js");
+//const lexer = require("./example.js");
+const lexer = require("./manual-lexer.js");
+
 parser.lexer = lexer;
