@@ -30,7 +30,7 @@ expr
 
 %%
 
-//const lexer = require("./example.js");
-const lexer = require("./manual-lexer.js");
+const lexer = require("./example.js");
+//const lexer = require("./manual-lexer.js");
 
 parser.lexer = lexer;
