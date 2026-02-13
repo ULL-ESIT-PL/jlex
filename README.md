@@ -187,3 +187,8 @@ Here is a description of the attributes of the lexer object:
   conditions: { INITIAL: { rules: [Array], inclusive: true } }
 }
 ```
+
+## Writing a Jison compatible lexer by hand 
+
+See example in file [examples/manual-lexer.js](examples/manual-lexer.js) to see an example that 
+illustrates how to write a Jison compatible lexer by hand.
