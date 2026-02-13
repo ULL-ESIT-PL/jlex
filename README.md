@@ -8,9 +8,18 @@
 ## Usage
 
 ```
-npx jlex <package name>
-```
+npx jlex --help
+Usage: jlex [options] <filename>
 
+A tiny wrapper around jison-lex that allows you to use jison-lex as a standalone (flex like) processor.
+
+Options:
+  -V, --version            output the version number
+  -o, --output <fileName>  Output file name
+  -v, --verbose            Enable verbose output
+  -h, --help               display help for command
+See https://github.com/ULL-ESIT-PL/jlex/blob/main/README.md for more help
+```
 
 ## Example
 
@@ -32,7 +41,13 @@ comment [/][*](.|[\r\n])*?[*][/]
 Compile it with:
 
 ```
-npx jlex examples/example.l
+➜  jlex git:(main) ./jlex.js examples/example.l -v -o examples/example.js
+📖 Reading lexer grammar from: examples/example.l
+📝 Generated 11340 characters of lexer code
+🔄 Applied transformation pattern: /var\s+lexer\s*=/
+📝 Writing file: examples/example.js
+✅ Successfully processed examples/example.l → examples/example.js
+📊 Output size: 11.1KB
 ``` 
 
 This produces a Common.JS module `examples/example.js` you can use with a simple `require` like in the file [main.js](examples/main.js) below:
