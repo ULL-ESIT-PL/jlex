@@ -17,30 +17,30 @@ npx jlex <package name>
 `jlex` is  a tiny wrapper around `jison-lex` that allows you to use the script 
 `jlex` as standalone (`flex` like) processor.
 
-Assuming the following lexer in file `example.js`:
+Assuming the following lexer in file [examples/example.l](examples/example.l):
 
 ```
+comment [/][*](.|[\r\n])*?[*][/]
 %%
-\s+                   /* skip whitespace */
+\s+|{comment}         /* skip whitespace */
 [0-9]+                return 'NUMBER';
-"-"                   return '-';
+[-+*/]                return 'OPERATOR';
 <<EOF>>               return 'EOF';
-.                     return 'INVALID';% 
+.                     return 'INVALID';
 ```
 
 Compile it with:
 
 ```
-➜  jlex-test npx jlex example  
-Processing file: example
-Writing file: example.js
+npx jlex examples/example.l
 ``` 
 
-This produces a Common.JS module `example.js` you can use with a simple `require` like in the file `main.js` below:
+This produces a Common.JS module `examples/example.js` you can use with a simple `require` like in the file `main.js` below:
 
 ```js
 const lex = require("./example");
-lex.setInput("2\n-\n3")
+const input = process.argv[2] || "2\n-/* a comment*/\n3";
+lex.setInput(input);
 
 const results = [];
 
@@ -49,38 +49,13 @@ results.push({ type: lex.lex(), lexeme: lex.yytext, loc: lex.yylloc });
 results.push({ type: lex.lex(), lexeme: lex.yytext, loc: lex.yylloc });
 results.push({ type: lex.lex(), lexeme: lex.yytext, loc: lex.yylloc });
 
-console.log(results);
-/*
-➜  examples git:(main) ✗ node main.js
-[
-  {
-    type: 'NUMBER',
-    lexeme: '2',
-    loc: { first_line: 1, last_line: 1, first_column: 0, last_column: 1 }
-  },
-  {
-    type: '-',
-    lexeme: '-',
-    loc: { first_line: 2, last_line: 2, first_column: 0, last_column: 1 }
-  },
-  {
-    type: 'NUMBER',
-    lexeme: '3',
-    loc: { first_line: 3, last_line: 3, first_column: 0, last_column: 1 }
-  },
-  {
-    type: 'EOF',
-    lexeme: '',
-    loc: { first_line: 3, last_line: 3, first_column: 1, last_column: 1 }
-  }
-]
-*/  
+console.log(results); 
 ```
 When you execute the former program, you get:
 
 
 ```js
-➜  jlex-test node main.js 
+➜  jlex git:(main) ✗ node examples/main.js 
 [
   {
     type: 'NUMBER',
@@ -88,7 +63,7 @@ When you execute the former program, you get:
     loc: { first_line: 1, last_line: 1, first_column: 0, last_column: 1 }
   },
   {
-    type: '-',
+    type: 'OPERATOR',
     lexeme: '-',
     loc: { first_line: 2, last_line: 2, first_column: 0, last_column: 1 }
   },
@@ -102,7 +77,6 @@ When you execute the former program, you get:
     lexeme: '',
     loc: { first_line: 3, last_line: 3, first_column: 1, last_column: 1 }
   }
-]
 ```
 
 ## Using the lexer from a Jison grammar
