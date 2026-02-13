@@ -193,7 +193,7 @@ Here is a description of the attributes of the lexer object:
 See file [examples/manual-lexer.js](examples/manual-lexer.js) to see an example that 
 illustrates how to write a Jison compatible lexer by hand.
 
-To use with the grammar in the `examples` folder, change the lexer to the hand-written one:
+To use with the [grammar](examples/grammar.jison#L33-L34) in the `examples` folder, set the `parser.lexer` to the hand-written one:
 
 ```diff
 ➜  jlex git:(main) ✗ git -P diff examples/grammar.jison 
@@ -220,6 +220,7 @@ index 0b99d40..c9e974d 100644
  parser.lexer = lexer;
 \ No newline at end of file
 ```
+
 Then compile the grammar:
 
 ```
