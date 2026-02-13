@@ -104,7 +104,7 @@ When you execute the former program, you get:
 
 ## Using the lexer from a Jison grammar
 
-In file  [examples/grammar.jison](examples/grammar.jison) you'll find an example
+In file  [examples/grammar.jison](examples/grammar.jison#L32-L33) you'll find an example
 of setting the generated lexer to be used from a Jison grammar. The key is 
 to set the `lex` attribute of the `parser` object to the generated lexer:
 
