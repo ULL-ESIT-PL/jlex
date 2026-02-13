@@ -1,6 +1,6 @@
 {
   "name": "jlex",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "A wrapper around jison-lex to make it work as a standalone program like Flex",
   "keywords": [
     "jison-lex",
