@@ -102,6 +102,56 @@ When you execute the former program, you get:
 ]
 ```
 
+## Using the lexer from a Jison grammar
+
+In file  [examples/grammar.jison](examples/grammar.jison) you'll find an example
+of setting the generated lexer to be used from a Jison grammar. The key is 
+to set the `lex` attribute of the `parser` object to the generated lexer:
+
+```js
+%%
+const lexer = require("./example.js");
+parser.lexer = lexer;
+```
+Compile the grammar with:
+
+```
+➜  jlex git:(main) ✗ npx jison examples/grammar.jison -o examples/parser.js
+```
+
+And use the parser:
+
+```
+➜  jlex git:(main) ✗ node
+Welcome to Node.js v25.6.0.
+Type ".help" for more information.
+> p = require("./examples/parser.js")
+{
+  parser: { yy: {} },
+  Parser: [Function: Parser],
+  parse: [Function (anonymous)],
+  main: [Function: commonjsMain]
+}
+> p.parse(`3
+| -
+| /* comment */
+| 1`)
+{
+  type: 'OPERATOR',
+  left: {
+    type: 'number',
+    value: 3,
+    loc: { first_line: 1, last_line: 1, first_column: 0, last_column: 1 }
+  },
+  right: {
+    type: 'number',
+    value: 1,
+    loc: { first_line: 4, last_line: 4, first_column: 0, last_column: 1 }
+  },
+  loc: { first_line: 2, last_line: 2, first_column: 0, last_column: 1 }
+}
+```
+
 ## The Lexical Analyzer Object
 
 Here is a description of the attributes of the lexer object:

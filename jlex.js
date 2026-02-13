@@ -10,6 +10,7 @@ const program = new Command();
 program
   .version(packageJson.version)
   .description('A tiny wrapper around jison-lex that allows you to use jison-lex as a standalone (flex like) processor.')
+  .addHelpText('after', `See https://github.com/ULL-ESIT-PL/jlex/blob/main/README.md for more help`)
   .option("-o <fileName>", "Output file name")
   .usage("[options] <filename>");
 

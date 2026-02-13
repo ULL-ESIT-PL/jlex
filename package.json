@@ -26,8 +26,9 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "./jlex.js examples/example.l && node examples/main.js"
+    "example": "./jlex.js examples/example.l && node examples/main.js",
+    "grammar": "jison examples/grammar.jison -o examples/parser.js",
+    "clean": "rm -f examples/example.js examples/parser.js"
   },
   "dependencies": {
     "commander": "^11.0.3",
