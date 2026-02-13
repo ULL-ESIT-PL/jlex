@@ -99,7 +99,7 @@ Compile the grammar with:
 
 And use the parser:
 
-```
+```js
 ➜  jlex git:(main) ✗ node
 Welcome to Node.js v25.6.0.
 Type ".help" for more information.
