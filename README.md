@@ -1,5 +1,5 @@
 
-# jlex [![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/jlex)
+# jlex ![NPM Version](https://img.shields.io/npm/v/jlex)
 
 ## Install
 
