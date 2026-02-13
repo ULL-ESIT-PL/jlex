@@ -77,6 +77,7 @@ When you execute the former program, you get:
     lexeme: '',
     loc: { first_line: 3, last_line: 3, first_column: 1, last_column: 1 }
   }
+]
 ```
 
 ## Using the lexer from a Jison grammar
